@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional portfolio website showcasing skills, achievements, and experience">
+    <title>Portfolio | KALIM J</title>
+    <link rel="stylesheet" href="site/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav__brand">
+                <a href="#home">Portfolio</a>
+            </div>
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="#about" class="nav__link">About</a></li>
+                <li><a href="#skills" class="nav__link">Skills</a></li>
+                <li><a href="#achievements" class="nav__link">Achievements</a></li>
+                <li><a href="#experience" class="nav__link">Experience</a></li>
+                <li><a href="#contact" class="nav__link">Contact</a></li>
+            </ul>
+            <div class="nav__actions">
+                <button class="btn secondary" id="editModeToggle" aria-label="Toggle edit mode">
+                    <span id="editModeIcon">✏️</span>
+                    <span id="editModeText">Edit</span>
+                </button>
+            </div>
+            <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero / About Me Section -->
+        <section id="about" class="section hero">
+            <div class="hero__content">
+                <p class="eyebrow">Welcome</p>
+                <h1>Hi, I'm <span class="accent">KALIM J</span></h1>
+                <p class="lead">
+                    <!-- TODO: Replace with your professional summary -->
+                    I'm a passionate professional with expertise in data analysis, web development, and creative problem-solving. 
+                    With a strong foundation in analytical thinking and a keen eye for detail, I bring innovative solutions 
+                    to complex challenges. I thrive in collaborative environments and am always eager to learn and grow.
+                </p>
+                <div class="hero__actions">
+                    <a href="#contact" class="btn primary">Get in Touch</a>
+                    <a href="#experience" class="btn secondary">View Projects</a>
+                </div>
+            </div>
+            <div class="hero__card">
+                <div class="hero__photo">
+                    <img src="images/profile.jpg" 
+                         alt="KALIM J - Profile Photo" 
+                         class="hero__img"
+                         onerror="this.onerror=null; this.style.display='none'; document.getElementById('photoPlaceholder').style.display='flex';">
+                    <div id="photoPlaceholder" class="hero__img-placeholder" style="display: none;">
+                        <span>📷 Add your photo as<br>images/profile.jpg</span>
+                    </div>
+                </div>
+                <div class="hero__interests">
+                    <h3>Personal Interests</h3>
+                    <ul>
+                        <!-- TODO: Customize with your interests -->
+                        <li>Data Visualization & Analytics</li>
+                        <li>Photography & Creative Arts</li>
+                        <li>Reading & Continuous Learning</li>
+                        <li>Travel & Cultural Exploration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section section--contrast">
+            <div class="section__header">
+                <div>
+                    <p class="eyebrow">Core Competencies</p>
+                    <h2>Skills & Expertise</h2>
+                </div>
+                <button class="btn secondary edit-mode-only" id="addSkillBtn" style="display: none;">
+                    + Add Skill
+                </button>
+            </div>
+            <div class="grid grid--skills" id="skillsContainer">
+                <!-- Skills will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="section">
+            <div class="section__header">
+                <div>
+                    <p class="eyebrow">Recognition</p>
+                    <h2>Achievements & Certifications</h2>
+                </div>
+                <button class="btn secondary edit-mode-only" id="addAchievementBtn" style="display: none;">
+                    + Add Achievement
+                </button>
+            </div>
+            <div class="grid grid--cards" id="achievementsContainer">
+                <!-- Achievements will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <!-- Experience / Projects Section -->
+        <section id="experience" class="section section--contrast">
+            <div class="section__header">
+                <div>
+                    <p class="eyebrow">Work & Projects</p>
+                    <h2>Experience & Projects</h2>
+                </div>
+                <button class="btn secondary edit-mode-only" id="addExperienceBtn" style="display: none;">
+                    + Add Experience
+                </button>
+            </div>
+            <div class="timeline" id="experienceContainer">
+                <!-- Experience items will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section__header">
+                <div>
+                    <p class="eyebrow">Get in Touch</p>
+                    <h2>Contact Me</h2>
+                    <p class="lead">I'd love to hear from you! Feel free to reach out for collaborations, opportunities, or just to connect.</p>
+                </div>
+            </div>
+            <div class="contact-container">
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="form-group">
+                            <label for="name">Name <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required placeholder="Your full name">
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="What's this about?">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message <span class="required">*</span></label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Your message here..."></textarea>
+                            <span class="error-message" id="messageError"></span>
+                        </div>
+                        <button type="submit" class="btn primary">Send Message</button>
+                        <div class="form-message" id="formMessage"></div>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-info__item">
+                        <div class="contact-info__icon">📧</div>
+                        <div>
+                            <h3>Email</h3>
+                            <a href="mailto:kalim.offic@gmail.com">kalim.offic@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-info__item">
+                        <div class="contact-info__icon">💼</div>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <a href="https://www.linkedin.com/in/kalim-j-5abb11295/" target="_blank" rel="noopener noreferrer">linkedin.com/in/kalim-j-5abb11295</a>
+                        </div>
+                    </div>
+                    <div class="contact-info__item">
+                        <div class="contact-info__icon">🐙</div>
+                        <div>
+                            <h3>GitHub</h3>
+                            <a href="https://github.com/kalim-j" target="_blank" rel="noopener noreferrer">github.com/kalim-j</a>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <h3>Connect on Social Media</h3>
+                        <div class="social-links__list">
+                            <!-- TODO: Update with your actual social media links -->
+                            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" 
+                               class="social-link" aria-label="Twitter">
+                                <span>Twitter</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/kalim-j-5abb11295/" target="_blank" rel="noopener noreferrer" 
+                               class="social-link" aria-label="LinkedIn">
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/kalim-j" target="_blank" rel="noopener noreferrer" 
+                               class="social-link" aria-label="GitHub">
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" 
+                               class="social-link" aria-label="Instagram">
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; <span id="currentYear"></span> KALIM J. All rights reserved.</p>
+        <div class="footer__links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </footer>
+
+    <!-- Modals for Edit/Add Functionality -->
+    <!-- Skill Modal -->
+    <div class="modal" id="skillModal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2 id="skillModalTitle">Add Skill</h2>
+                <button class="modal__close" id="skillModalClose">&times;</button>
+            </div>
+            <form id="skillForm" class="modal__form">
+                <div class="form-group">
+                    <label for="skillIcon">Icon (Emoji)</label>
+                    <input type="text" id="skillIcon" placeholder="📊" maxlength="2" required>
+                </div>
+                <div class="form-group">
+                    <label for="skillTitle">Skill Name <span class="required">*</span></label>
+                    <input type="text" id="skillTitle" placeholder="e.g., Data Analysis" required>
+                </div>
+                <div class="form-group">
+                    <label for="skillDescription">Description <span class="required">*</span></label>
+                    <textarea id="skillDescription" rows="3" placeholder="Brief description of the skill" required></textarea>
+                </div>
+                <div class="modal__actions">
+                    <button type="button" class="btn ghost" id="skillModalCancel">Cancel</button>
+                    <button type="submit" class="btn primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Achievement Modal -->
+    <div class="modal" id="achievementModal">
+        <div class="modal__content">
+            <div class="modal__header">
+                <h2 id="achievementModalTitle">Add Achievement</h2>
+                <button class="modal__close" id="achievementModalClose">&times;</button>
+            </div>
+            <form id="achievementForm" class="modal__form">
+                <div class="form-group">
+                    <label for="achievementBadge">Badge (Emoji)</label>
+                    <input type="text" id="achievementBadge" placeholder="🏆" maxlength="2" required>
+                </div>
+                <div class="form-group">
+                    <label for="achievementTitle">Title <span class="required">*</span></label>
+                    <input type="text" id="achievementTitle" placeholder="e.g., Data Analyst Certification" required>
+                </div>
+                <div class="form-group">
+                    <label for="achievementMeta">Meta Information</label>
+                    <input type="text" id="achievementMeta" placeholder="e.g., Google | 2024">
+                </div>
+                <div class="form-group">
+                    <label for="achievementDescription">Description <span class="required">*</span></label>
+                    <textarea id="achievementDescription" rows="3" placeholder="Description of the achievement" required></textarea>
+                </div>
+                <div class="modal__actions">
+                    <button type="button" class="btn ghost" id="achievementModalCancel">Cancel</button>
+                    <button type="submit" class="btn primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Experience Modal -->
+    <div class="modal" id="experienceModal">
+        <div class="modal__content modal__content--large">
+            <div class="modal__header">
+                <h2 id="experienceModalTitle">Add Experience</h2>
+                <button class="modal__close" id="experienceModalClose">&times;</button>
+            </div>
+            <form id="experienceForm" class="modal__form">
+                <div class="form-group">
+                    <label for="experienceTitle">Title <span class="required">*</span></label>
+                    <input type="text" id="experienceTitle" placeholder="e.g., Senior Data Analyst" required>
+                </div>
+                <div class="form-group">
+                    <label for="experienceCompany">Company/Organization</label>
+                    <input type="text" id="experienceCompany" placeholder="e.g., Tech Solutions Inc.">
+                </div>
+                <div class="form-group">
+                    <label for="experienceDate">Date/Period <span class="required">*</span></label>
+                    <input type="text" id="experienceDate" placeholder="e.g., 2023 - Present" required>
+                </div>
+                <div class="form-group">
+                    <label for="experienceDescription">Description <span class="required">*</span></label>
+                    <textarea id="experienceDescription" rows="4" placeholder="Describe your role, responsibilities, and achievements" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="experienceTags">Tags (comma-separated)</label>
+                    <input type="text" id="experienceTags" placeholder="e.g., Python, SQL, Tableau">
+                </div>
+                <div class="form-group">
+                    <label for="experienceLink">Project Link (optional)</label>
+                    <input type="url" id="experienceLink" placeholder="https://example.com">
+                </div>
+                <div class="modal__actions">
+                    <button type="button" class="btn ghost" id="experienceModalCancel">Cancel</button>
+                    <button type="submit" class="btn primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
